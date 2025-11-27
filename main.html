@@ -1,39 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>OTP Entry Frontend</title>
-    <link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+	<!-- the entire body must be written by student -->
+	<h3 id="verification_heading">Verify Your Account</h3>
+	<h4 id="verification_subtext">We emailed you the six digit code to acciojob@email.con Enter the code below to confirm your email address.</h4>
+	<div class="code-container">
+		<input class="code" id="code-1" type="text" inputmode="numeric" maxlength="1"  />
+		<input class="code" id="code-2" type="text" inputmode="numeric" maxlength="1"  />
+		<input class="code" id="code-3" type="text" inputmode="numeric" maxlength="1"  />
+		<input class="code" id="code-4" type="text" inputmode="numeric" maxlength="1"  />
+		<input class="code" id="code-5" type="text" inputmode="numeric" maxlength="1"  />
+		<input class="code" id="code-6" type="text" inputmode="numeric" maxlength="1"  />
+	</div>
+    <script type="text/javascript" src="./script.js">
+</script>
 
-    <div class="container">
-
-        <h1 id="verification_heading">Verify Your Account</h1>
-
-        <p id="verification_subtext">
-            We emailed you the six digit code to acciojob@email.com
-            Enter the code below to confirm your email address.
-        </p>
-
-        <div class="code-container">
-            <input type="text" maxlength="1" class="code">
-            <input type="text" maxlength="1" class="code">
-            <input type="text" maxlength="1" class="code">
-            <input type="text" maxlength="1" class="code">
-            <input type="text" maxlength="1" class="code">
-            <input type="text" maxlength="1" class="code">
-        </div>
-
-        <p class="note">
-            This is design only. We didn't actually send you an email as we don't have your email, right?
-        </p>
-
-    </div>
-
-    <script src="script.js"></script>
 </body>
 
 </html>

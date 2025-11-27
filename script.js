@@ -1,35 +1,17 @@
-const codes = document.querySelectorAll(".code");
+const express = require('express');
+const path = require('path');
 
-codes[0].focus();
+const app = express();
 
-codes.forEach((code, index) => {
+app.use(express.static(__dirname))
 
-    code.addEventListener("input", (e) => {
-        const value = e.target.value;
-
-        if (!/^[0-9]$/.test(value)) {
-            e.target.value = "";
-            return;
-        }
-
-        if (index < codes.length - 1) {
-            codes[index + 1].focus();
-        }
-    });
-
-    code.addEventListener("keydown", (e) => {
-        if (e.key === "Backspace") {
-
-            if (code.value !== "") {
-                code.value = "";
-                return;
-            }
-
-            if (index > 0) {
-                codes[index - 1].value = "";
-                codes[index - 1].focus();
-            }
-        }
-    });
-
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname + '/main.html'));
 });
+//your code here
+app.post('/add', (req, res) => {
+  const {a,b} = req.body;
+  res.status(200).send(a+b);
+  // res.sendFile(path.join(__dirname + '/main.html'));
+});
+module.exports = app;
