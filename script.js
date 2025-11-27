@@ -1,17 +1,40 @@
-const express = require('express');
-const path = require('path');
+let inputs = document.querySelectorAll(".code");
 
-const app = express();
+inputs.forEach((input, index) => {
+  // Typing forward
+  input.addEventListener('input', (e) => {
+    const value = e.target.value;
+    // Allow only digits
+    if (!/^\d$/.test(value)) {
+      e.target.value = "";
+      return;
+    }
+    // Move focus to next input if exists
+    if (index < inputs.length - 1) {
+      inputs[index + 1].focus();
+    }
+  });
 
-app.use(express.static(__dirname))
+  // Backspace behavior
+  input.addEventListener('keydown', (e) => {
+    if (e.key === "Backspace") {
+      if (input.value === "") {
+        if (index > 0) {
+          inputs[index - 1].value = "";
+          inputs[index - 1].focus();
+        }
+      } else {
+        input.value = "";
+      }
+      e.preventDefault();
+    }
+  });
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/main.html'));
+  // Auto-select text on focus for easy replacement
+  input.addEventListener('focus', () => {
+    input.select();
+  });
 });
-//your code here
-app.post('/add', (req, res) => {
-  const {a,b} = req.body;
-  res.status(200).send(a+b);
-  // res.sendFile(path.join(__dirname + '/main.html'));
-});
-module.exports = app;
+
+// Set initial focus on the first input
+inputs[0].focus();
